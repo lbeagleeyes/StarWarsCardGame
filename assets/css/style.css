@@ -1,0 +1,22 @@
+
+
+h1 {
+    font-family: 'Geostar Fill', cursive;
+    color: aliceblue;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    color: aliceblue;
+}
+
+button {
+    width: 100%;
+
+}
+
+#play {
+    width: 10%;
+ 
+}
