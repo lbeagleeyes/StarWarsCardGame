@@ -16,7 +16,11 @@ button {
 
 }
 
-#play {
+#playbtn {
     width: 10%;
  
+}
+
+p{
+    font-family: 'Saira Extra Condensed', sans-serif;
 }

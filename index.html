@@ -11,6 +11,10 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Geostar+Fill" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="assets/javascript/game.js"></script>
 
     <title>Star Wars RPG Game</title>
 </head>
@@ -22,51 +26,12 @@
                 <h1>Star Wars RPG Game</h1>
             </div>
         </div>
-    </div>
+    
     <div class="row">
         <div class="col-sm-5">
             <!-- Good guys card deck -->
-            <div class="card-deck">
-                <div class="card character">
-                    <img src="assets/images/luke.jpg" class="card-img-top" alt="Luke SkyWalker">
-                    <div class="card-body">
-                        <h5 class="card-title">Luke SkyWalker</h5>
-                        <p class="card-text">Health Points: <div id="lukeHP"></div>
-                            Attack Base Power: <div id="lukeBP"></div>
-                            Counter Attack Power: <div id="lukeCAP"></div>
-                        </p>
-                    </div>
-                </div>
-                <div class="card character">
-                    <img src="assets/images/hanSolo.jpg" class="card-img-top" alt="Han Solo">
-                    <div class="card-body">
-                        <h5 class="card-title">Han Solo</h5>
-                        <p class="card-text">Health Points: <div id="soloHP"></div>
-                            Attack Base Power: <div id="soloBP"></div>
-                            Counter Attack Power: <div id="soloCAP"></div>
-                        </p>
-                    </div>
-                </div>
-                <div class="card character">
-                    <img src="assets/images/chewie.jpg" class="card-img-top" alt="Chewbacca">
-                    <div class="card-body">
-                        <h5 class="card-title">Chewie</h5>
-                        <p class="card-text">Health Points: <div id="chewieHP"></div>
-                            Attack Base Power: <div id="chewieBP"></div>
-                            Counter Attack Power: <div id="chewieCAP"></div>
-                        </p>
-                    </div>
-                </div>
-                <div class="card character">
-                    <img src="assets/images/rey.jpg" class="card-img-top" alt="Rey">
-                    <div class="card-body">
-                        <h5 class="card-title">Rey</h5>
-                        <p class="card-text">Health Points: <div id="reyHP"></div>
-                            Attack Base Power: <div id="reyBP"></div>
-                            Counter Attack Power: <div id="reyCAP"></div>
-                        </p>
-                    </div>
-                </div>
+            <div class="card-deck" id="goodGuysDeck">
+                    
             </div>
         </div>
         <div class="col-sm-2">
@@ -74,47 +39,8 @@
         </div>
         <div class="col-sm-5">
             <!-- bad guys card deck -->
-            <div class="card-deck">
-                <div class="card character">
-                    <img src="assets/images/darthMaul.jpg" class="card-img-top" alt="Darth Maul">
-                    <div class="card-body">
-                        <h5 class="card-title">Darth Maul</h5>
-                        <p class="card-text">Health Points: <div id="darthMaulHP"></div>
-                            Attack Base Power: <div id="darthMaulBP"></div>
-                            Counter Attack Power: <div id="darthMaulCAP"></div>
-                        </p>
-                    </div>
-                </div>
-                <div class="card character">
-                    <img src="assets/images/darthVader.jpg" class="card-img-top" alt="Darth Vader">
-                    <div class="card-body">
-                        <h5 class="card-title">Darth Vader</h5>
-                        <p class="card-text">Health Points: <div id="vaderHP"></div>
-                            Attack Base Power: <div id="vaderBP"></div>
-                            Counter Attack Power: <div id="vaderCAP"></div>
-                        </p>
-                    </div>
-                </div>
-                <div class="card character">
-                    <img src="assets/images/stormTropper.jpg" class="card-img-top" alt="Stormtrooper">
-                    <div class="card-body">
-                        <h5 class="card-title">Stormtrooper</h5>
-                        <p class="card-text">Health Points: <div id="trooperHP"></div>
-                            Attack Base Power: <div id="trooperBP"></div>
-                            Counter Attack Power: <div id="trooperCAP"></div>
-                        </p>
-                    </div>
-                </div>
-                <div class="card character">
-                    <img src="assets/images/kylo.jpg" class="card-img-top" alt="Kylo Ren">
-                    <div class="card-body">
-                        <h5 class="card-title">Kylo Ren</h5>
-                        <p class="card-text">Health Points: <div id="kyloHP"></div>
-                            Attack Base Power: <div id="kyloBP"></div>
-                            Counter Attack Power: <div id="kyloCAP"></div>
-                        </p>
-                    </div>
-                </div>
+            <div class="card-deck" id="badGuysDeck">
+                    
             </div>
         </div>
     </div>
@@ -125,41 +51,28 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-1 offset-sm-4">
+        <div class="col-sm-2 offset-sm-3">
             <!-- your character card -->
             <div class="card" id="chosenCharacter">
-                <img src="#placeholder" class="card-img-top" alt="Your Character">
-                <div class="card-body">
-                    <h5 class="card-title" id="characterName"></h5>
-                    <p class="card-text">Health Points: <div id="charHP"></div>
-                        Attack Base Power: <div id="charBP"></div>
-                        Counter Attack Power: <div id="charCAP"></div>
-                    </p>
-                </div>
+                
             </div>
         </div>
         <div class="col-sm-1">
             <!-- Attack button -->
-            <button type="button" class="btn btn-danger">Attack</button>
+            <button type="button" class="btn btn-danger" id="attackBtn" onclick="attack()">Attack</button>
         </div>
-        <div class="col-sm-1">
+        <div class="col-sm-2">
             <!-- opponent character card -->
-            <div class="card" id="opponent">
-                <img src="#" class="card-img-top" alt="Opponent">
-                <div class="card-body">
-                    <h5 class="card-title" id="opponentName"></h5>
-                    <p class="card-text">Health Points: <div id="opponentHP"></div>
-                        Attack Base Power: <div id="opponentBP"></div>
-                        Counter Attack Power: <div id="opponentCAP"></div>
-                    </p>
-                </div>
+            <div class="card" id="opponentCard">
+                
+                
             </div>
         </div>
     </div>
     <div class="row">
         <!-- Play Again button -->
         <div class="col-sm-12">
-            <button type="button" class="btn btn-light" id="play" onclick="resetGame()">Play Again</button>
+            <button type="button" class="btn btn-light" id="playbtn" onclick="resetGame()">Play Again</button>
         </div>
     </div>
 
