@@ -30,7 +30,7 @@ class Character {
         if (!this.isJedi) {
             this.openingSound = new Sound("assets/sounds/LaserBlaster.mp3");
             this.attackSound = new Sound("assets/sounds/LaserBlasts.mp3");
-        }else {
+        } else {
             this.openingSound = new Sound("assets/sounds/LightsaberTurnOn.mp3");
             this.attackSound = new Sound("assets/sounds/LightsaberClash.mp3");
         }
@@ -43,13 +43,7 @@ class Character {
         var points = Math.floor((Math.random() * max) + min);;
         return points;
     }
-
-    resetAttackPoints() {
-        this.attackPoints = this.originalAttackPoints;
-    }
 }
-
-
 
 var goodCharactersArr = [];
 var evilCharactersArr = [];
@@ -59,28 +53,35 @@ var chosenCharacter = {};
 var currentOpponent = {};
 var numCharsDefeated = 0;
 
-function resetGame() {
-    goodCharactersArr = [new Character("Luke", "luke", true), new Character("Solo", "hanSolo", false), new Character("Chewie", "chewie", false), new Character("Rey", "rey", true)];
-    evilCharactersArr = [new Character("Maul", "darthMaul", true), new Character("Vader", "darthVader", true), new Character("Trooper", "stormTropper", false), new Character("Kylo", "kylo", true)];
-
+function clearView() {
     $("#goodGuysDeck").empty();
     $("#badGuysDeck").empty();
     $("#playbtn").css('display', 'none');
     $("#chosenCharacter").empty();
     $("#opponentCard").empty();
+}
 
-    //generate good guy card decks
+function resetGame() {
 
+    goodCharactersArr = [new Character("Luke", "luke", true), new Character("Solo", "hanSolo", false), new Character("Chewie", "chewie", false), new Character("Rey", "rey", true)];
+
+    evilCharactersArr = [new Character("Maul", "darthMaul", true), new Character("Vader", "darthVader", true), new Character("Trooper", "stormTropper", false), new Character("Kylo", "kylo", true)];
+
+    clearView();
+
+    //generate good guys card decks
     goodCharactersArr.forEach(character => {
         var card = createCard(character);
         $('#goodGuysDeck').append(card);
     });
 
+    //generate evil guys card deck
     evilCharactersArr.forEach(character => {
         var card = createCard(character);
         $('#badGuysDeck').append(card);
     });
 
+    //enable attack button
     $('#attackBtn').prop("disabled", false);
 
     chosenCharacter = {};
@@ -88,8 +89,8 @@ function resetGame() {
     numCharsDefeated = 0;
     choseCharacter = false;
     choseOpponent = false;
-    updateInstructions();
 
+    updateInstructions();
 }
 
 function updateInstructions(status = "") {
@@ -168,39 +169,37 @@ function createCard(character) {
     return card;
 }
 
-// function updateViewPoints(character) {
+function updateCardPoints(character) {
 
-// }
+    var charId = '#' + character.imgName + 'pointsText';
+    var charText = 'HP: ' + character.healthPoints
+        + ' AP: ' + character.attackPoints
+        + ' CAP: ' + character.counterAttackPoints;
 
-function attack() {
-    if(!choseOpponent || !choseCharacter) {
-        return;
-    }
-    currentOpponent.healthPoints -= chosenCharacter.attackPoints;
-    chosenCharacter.attackSound.play();
-    chosenCharacter.attackPoints += chosenCharacter.originalAttackPoints;
-    chosenCharacter.healthPoints -= currentOpponent.counterAttackPoints;
-    currentOpponent.attackSound.play();
+    $(charId).text(charText);
+}
 
-    //checkforWin
+function checkForWin() {
+
     if (chosenCharacter.healthPoints <= 0) {
         //you lost
         chosenCharacter.healthPoints = 0;
         updateInstructions("defeated");
         $('#attackBtn').prop("disabled", true);
         $('#playbtn').show();
+
     } else if (currentOpponent.healthPoints <= 0) {
         //you defeated current opponent
         currentOpponent.healthPoints = 0;
-        //chosenCharacter.resetAttackPoints();
         numCharsDefeated++;
 
         if (numCharsDefeated < evilCharactersArr.length) {
-            //chosse your next opponent
+            //choose your next opponent
             $('#opponentCard').empty();
             currentOpponent = {};
             choseOpponent = false;
             updateInstructions();
+
         } else {
             //no more opponents - you Won!
             updateInstructions("winner");
@@ -208,22 +207,23 @@ function attack() {
             $('#playbtn').show();
         }
     }
+}
 
-    var charId = '#' + chosenCharacter.imgName + 'pointsText';
-    var charText = 'HP: ' + chosenCharacter.healthPoints
-        + ' AP: ' + chosenCharacter.attackPoints
-        + ' CAP: ' + chosenCharacter.counterAttackPoints;
+function attack() {
+    if (!choseOpponent || !choseCharacter) {
+        return;
+    }
 
-    var opponentId = '#' + currentOpponent.imgName + 'pointsText';
-    var opponentText = 'HP: ' + currentOpponent.healthPoints
-        + ' AP: ' + currentOpponent.attackPoints
-        + ' CAP: ' + currentOpponent.counterAttackPoints;
+    currentOpponent.healthPoints -= chosenCharacter.attackPoints;
+    chosenCharacter.attackSound.play();
+    chosenCharacter.attackPoints += chosenCharacter.originalAttackPoints;
+    chosenCharacter.healthPoints -= currentOpponent.counterAttackPoints;
+    currentOpponent.attackSound.play();
 
-    $(charId).text(charText);
-    $(opponentId).text(opponentText);
+    checkForWin();
 
-    // updateViewPoints(chosenCharacter);
-    // updateViewPoints(currentOpponent);
+    updateCardPoints(chosenCharacter);
+    updateCardPoints(currentOpponent);
 }
 
 $(document).ready(function () {
@@ -232,6 +232,6 @@ $(document).ready(function () {
 
     $('#gameInstructionsPopOver').popover({
         container: 'body'
-      });
+    });
 
 });

@@ -6,16 +6,20 @@ h1 {
     text-align: center;
 }
 
-h2 {
-    text-align: center;
+h2{
     color: aliceblue;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
 }
 
 button {
     width: 100%;
 }
 
-p{
+h5 {
+    font-weight: bold;
+}
+.card-body{
     font-family: 'Saira Extra Condensed', sans-serif;
 }
 
@@ -38,4 +42,9 @@ p{
 
 #badGuysDeck {
     float: left;
+}
+
+#gameInstructionsPopOver{
+    font-family: 'Saira Extra Condensed', sans-serif;
+
 }
