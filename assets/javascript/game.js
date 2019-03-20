@@ -207,6 +207,8 @@ function checkForWin() {
             $('#playbtn').show();
         }
     }
+    updateCardPoints(chosenCharacter);
+    updateCardPoints(currentOpponent);
 }
 
 function attack() {
@@ -222,8 +224,6 @@ function attack() {
 
     checkForWin();
 
-    updateCardPoints(chosenCharacter);
-    updateCardPoints(currentOpponent);
 }
 
 $(document).ready(function () {
