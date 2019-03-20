@@ -13,14 +13,29 @@ h2 {
 
 button {
     width: 100%;
-
-}
-
-#playbtn {
-    width: 10%;
- 
 }
 
 p{
     font-family: 'Saira Extra Condensed', sans-serif;
+}
+
+.card {
+    max-height: 250px;
+    max-width: 250px;
+}
+
+#chosenCharacter {
+    float: right;
+}
+
+#opponentCard {
+    float: left;
+}
+
+#goodGuysDeck {
+    float: right;
+}
+
+#badGuysDeck {
+    float: left;
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,10 +21,13 @@
 </head>
 
 <body background="assets/images/stars.jpg">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 center-text">
-                <h1>Star Wars RPG Game</h1>
+            <div class="col-sm-11 center-text">
+                <h1>Star Wars Card Game</h1>
+            </div>
+            <div class="col-sm-1 center-text">
+                <button type="button" class="btn btn-dark" id="gameInstructionsPopOver" data-toggle="popover" data-container="body" data-placement="bottom" title="Instructions" data-html="true" data-content="HP = Health Points <br> AP = Attack Points <br> CAP = Counter Attack Points <br> Select a character to play with, then choose your opponent. Each time you attack, your attack points will increase by your base power. <br> Your opponent can only attack you with the Counter Attack Points. <br> You win once you defeat 4 opponents.">Game Instructions</button>
             </div>
         </div>
     
@@ -51,17 +55,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2 offset-sm-3">
+        <div class="col-sm-5">
             <!-- your character card -->
             <div class="card" id="chosenCharacter">
                 
             </div>
         </div>
-        <div class="col-sm-1">
+        <div class="col-sm-2">
             <!-- Attack button -->
             <button type="button" class="btn btn-danger" id="attackBtn" onclick="attack()">Attack</button>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-5">
             <!-- opponent character card -->
             <div class="card" id="opponentCard">
                 
@@ -71,12 +75,16 @@
     </div>
     <div class="row">
         <!-- Play Again button -->
-        <div class="col-sm-12">
-            <button type="button" class="btn btn-light" id="playbtn" onclick="resetGame()">Play Again</button>
+        <div class="col-sm-2 offset-md-5">
+            <button type="button" class="btn btn-secondary" id="playbtn" onclick="resetGame()">Play Again</button>
         </div>
     </div>
 
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
